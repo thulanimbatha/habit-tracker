@@ -4,8 +4,10 @@ import requests
 API_ENDPOINT = "https://pixe.la/v1/users"
 USERNAME = "thulani"
 TOKEN = "AtomicHabits"
+GRAPH_ID = "codinghabit2022"
 
-graph_endpoint = f"https://pixe.la/v1/users/{USERNAME}/graphs"
+graph_endpoint = f"{API_ENDPOINT}/{USERNAME}/graphs"
+pixel_endpoint = f"{API_ENDPOINT}/{USERNAME}/graphs/{GRAPH_ID}"
 
 user_parameters = {
     "token" : TOKEN,
@@ -16,11 +18,16 @@ user_parameters = {
 }
 
 graph_parameters = {
-    "id"    : "codinghabit2022",
+    "id"    : GRAPH_ID,
     "name"  : "Coding Graph",
     "unit"  : "hrs",
     "type"  : "float",
     "color" : "ichou",
+}
+
+pixel_params = {
+    "date" : "20221005",
+    "quantity" : "2.5",
 }
 
 headers = {
@@ -31,6 +38,10 @@ headers = {
 # response = requests.post(url=API_ENDPOINT, json=parameters)
 # print(response.text)
 
-# create a graph definition
-response = requests.post(url=graph_endpoint, json=graph_parameters, headers=headers)
+# # create a graph definition
+# response = requests.post(url=graph_endpoint, json=graph_parameters, headers=headers)
+# print(response.text)
+
+# add a pixel
+response = requests.post(url=pixel_endpoint, json=pixel_params, headers=headers)
 print(response.text)
