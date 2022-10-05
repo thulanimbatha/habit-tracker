@@ -4,10 +4,11 @@ API_ENDPOINT = "https://pixe.la/v1/users"
 
 parameters = {
     "token" : "AtomicHabits",
-    "username" : "Thulani",
+    "username" : "thulani",
     "agreeTermsOfService" : "yes",
     "notMinor" : "yes"
 
 }
 
-response = requests.post(API_ENDPOINT, params=parameters)
+response = requests.post(url=API_ENDPOINT, json=parameters)
+print(response.text)
