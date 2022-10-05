@@ -10,5 +10,6 @@ parameters = {
 
 }
 
+# create user account
 response = requests.post(url=API_ENDPOINT, json=parameters)
 print(response.text)
