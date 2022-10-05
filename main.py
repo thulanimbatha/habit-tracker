@@ -1,4 +1,4 @@
-from urllib import request
+from datetime import datetime
 import requests
 
 API_ENDPOINT = "https://pixe.la/v1/users"
@@ -8,6 +8,8 @@ GRAPH_ID = "codinghabit2022"
 
 graph_endpoint = f"{API_ENDPOINT}/{USERNAME}/graphs"
 pixel_endpoint = f"{API_ENDPOINT}/{USERNAME}/graphs/{GRAPH_ID}"
+
+today = datetime.now()
 
 user_parameters = {
     "token" : TOKEN,
@@ -26,8 +28,8 @@ graph_parameters = {
 }
 
 pixel_params = {
-    "date" : "20221005",
-    "quantity" : "2.5",
+    "date" : today.strftime("%Y%m%d"),
+    "quantity" : input("How many hours did you use to code today? "),
 }
 
 headers = {
@@ -42,6 +44,12 @@ headers = {
 # response = requests.post(url=graph_endpoint, json=graph_parameters, headers=headers)
 # print(response.text)
 
-# add a pixel
-response = requests.post(url=pixel_endpoint, json=pixel_params, headers=headers)
-print(response.text)
+# # add a pixel
+# response = requests.post(url=pixel_endpoint, json=pixel_params, headers=headers)
+# print(response.text)
+
+# # update a pixel
+# response = requests.put(url=pixel_endpoint, json=pixel_params, headers=headers)
+# print(response.text)
+
+
