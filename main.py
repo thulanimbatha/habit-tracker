@@ -1,9 +1,10 @@
 from datetime import datetime
 import requests
+import os
 
 API_ENDPOINT = "https://pixe.la/v1/users"
-USERNAME = "thulani"
-TOKEN = "AtomicHabits"
+USERNAME = os.environ.get("HABIT_TRACKER_USERNAME")
+TOKEN = os.environ.get("HABIT_TRACKER_TOKEN")
 GRAPH_ID = "codinghabit2022"
 
 graph_endpoint = f"{API_ENDPOINT}/{USERNAME}/graphs"
